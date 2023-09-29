@@ -7,19 +7,21 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using System.Data.SqlClient;
 
 namespace MCT.Function
 {
-    public static class GetDays
+    public class GetDays
     {
         [FunctionName("GetDays")]
-        public static async Task<IActionResult> Run(
+        public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "days")] HttpRequest req,
             ILogger log)
         {
+            string ConnectionString = Environment.GetEnvironmentVariable("ConnectionString");
+            SqlConnection sqlConnection = new SqlConnection("");
 
-
-            return new OkObjectResult(responseMessage);
+            return new OkObjectResult("");
         }
     }
 }
